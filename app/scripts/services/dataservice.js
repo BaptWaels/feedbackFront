@@ -51,39 +51,33 @@ angular.module('feedbackFrontApp')
     ];
     /* jshint ignore:end */
 
-    teams.forEach(function(team){
-      team.data.forEach(function(app){
-        app.happy = VoteService.getAllHappyVotesFromApp(app.appName);
-        app.unhappy = VoteService.getAllUnhappyVotesFromApp(app.appName);
+    function initData (){
+      teams.forEach(function(team){
+        team.data.forEach(function(app){
+          app.happy = VoteService.getAllHappyVotesFromApp(app.appName);
+          app.unhappy = VoteService.getAllUnhappyVotesFromApp(app.appName);
+        });
       });
-    });
+    }
 
-    var activeTeam = 'offer';
+    initData();
+
 
     return {
-      initData : function(){
-        return ;
-      },
       getTeams: function () {
         return teams;
       },
-      getCurrentTeam: function(){
-        return activeTeam;
-      },
-      setCurrentTeam: function(team){
-        activeTeam = team;
-      },
-      getCurrentApps: function(){
+      getCurrentAppsFromTeamName: function(activeTeamName){
         var apps = [];
 
         teams.forEach(function(team){
-          if(team.name === activeTeam){
+          if(team.name === activeTeamName){
             team.data.forEach(function(app){
               apps.push(app);
             });
           }
         });
-        console.log(apps);
+
         return apps;
       }
     };

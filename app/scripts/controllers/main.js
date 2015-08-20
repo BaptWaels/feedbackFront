@@ -9,12 +9,18 @@
 
   function MainCtrl($scope, DataService) {
     $scope.teams = DataService.getTeams();
-    $scope.activeTeam = DataService.getCurrentTeam();
+    $scope.activeTeam = '';
+    $scope.currentApp = '';
+    $scope.apps = [];
 
     $scope.teamSelected = function (name) {
-      DataService.setCurrentTeam(name);
-      $scope.apps = DataService.getCurrentApps();
+      $scope.activeTeam = name;
+      $scope.apps = DataService.getCurrentAppsFromTeamName($scope.activeTeam)
+      $scope.currentApp = $scope.apps[0].appName;
+    };
+
+    $scope.modifyCurrentApp = function(appName){
+      $scope.currentApp = appName;
     };
   }
-
 })();
