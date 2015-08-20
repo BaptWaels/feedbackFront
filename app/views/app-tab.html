@@ -1,0 +1,19 @@
+<div layout="row" layout-align="center center">
+  <md-content class="voteStats" layout="row" layout-align="center" flex="100">
+    <md-card flex="20">
+      <h4>Positive</h4>
+      <h1 class="positive">{{happyRatio | number:1}}% ({{happyNb}})</h1>
+    </md-card>
+
+    <md-card flex="20">
+      <h4>Negative</h4>
+      <h1 class="negative">{{unhappyRatio | number:1}}% ({{unhappyNb}})</h1>
+    </md-card>
+  </md-content>
+</div>
+
+<div layout="row" layout-align="center">
+  <highchart config="pieConfig" disableDataWatch="false" ></highchart>
+</div>
+
+

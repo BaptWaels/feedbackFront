@@ -1,0 +1,15 @@
+.voteStats{
+  text-align: center;
+}
+
+.positive{
+  color: green;
+}
+
+.negative{
+  color: red;
+}
+
+md-card > h4{
+  font-weight: normal;
+}

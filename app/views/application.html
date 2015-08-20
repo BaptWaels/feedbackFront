@@ -1,0 +1,12 @@
+
+    <md-tabs md-border-bottom md-dynamic-height>
+      <md-tab ng-repeat="app in apps" label="{{app.appName}}">
+          <app-tab happy="app.happy" unhappy="app.unhappy"></app-tab>
+<!--
+          <div layout="row" layout-align="center">
+            <highchart config="pieConfig"></highchart>
+          </div>-->
+      </md-tab>
+    </md-tabs>
+
+
