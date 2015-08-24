@@ -1,13 +1,7 @@
-(function() {
+(function () {
 
   'use strict';
 
-  /**
-   * @ngdoc directive
-   * @name feedbackFrontApp.directive:appTab
-   * @description
-   * # appTab
-   */
   angular.module('feedbackFrontApp')
     .controller('AppTabController', AppTabController)
     .directive('appTab', function () {
@@ -15,12 +9,11 @@
         templateUrl: 'views/app-tab.html',
         scope: {
           happy: '=',
-          unhappy: '='
-
+          unhappy: '=',
+          toggleCommentMode: '&'
         },
         restrict: 'E',
-        controller : AppTabController
-
+        controller: AppTabController
       }
     });
 
@@ -29,10 +22,8 @@
   function AppTabController($scope, $q) {
 
     $q.all([$scope.happy, $scope.unhappy]).then(function (data) {
-      console.log(data);
       $scope.happyNb = data[0].length;
       $scope.unhappyNb = data[1].length;
-
 
       var nbVotes = $scope.happyNb + $scope.unhappyNb;
 
@@ -86,8 +77,9 @@
           }]
         }]
       };
-    }
+    };
 
     reloadChart();
   };
+
 })();

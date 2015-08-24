@@ -1,12 +1,12 @@
-(function(){
-'use strict';
+(function () {
+  'use strict';
 
-angular.module('feedbackFrontApp')
-  .factory('VoteService', VoteService);
+  angular.module('feedbackFrontApp')
+    .factory('VoteService', VoteService);
 
   VoteService.$inject['$http', 'EnvService'];
 
-    function VoteService($http, EnvService) {
+  function VoteService($http, EnvService) {
 
 
     return {
@@ -22,7 +22,7 @@ angular.module('feedbackFrontApp')
           return response.data;
         });
       },
-      getAllHappyVotes: function(){
+      getAllHappyVotes: function () {
         return $http({
           method: 'GET',
           url: EnvService.getFeedbackHost() + '/votes/happy',
@@ -34,7 +34,7 @@ angular.module('feedbackFrontApp')
           return response.data;
         });
       },
-      getAllUnhappyVotes: function(){
+      getAllUnhappyVotes: function () {
         return $http({
           method: 'GET',
           url: EnvService.getFeedbackHost() + '/votes/unhappy',
@@ -58,10 +58,10 @@ angular.module('feedbackFrontApp')
           return response.data;
         });
       },
-      getAllHappyVotesFromApp: function(app){
+      getAllHappyVotesFromApp: function (app) {
         return $http({
           method: 'GET',
-          url: EnvService.getFeedbackHost() + '/votes/' + app +'/happy',
+          url: EnvService.getFeedbackHost() + '/votes/' + app + '/happy',
           headers: {
             'Accept': 'application/json;charset=UTF-8',
             'Content-Type': 'application/json'
@@ -70,18 +70,18 @@ angular.module('feedbackFrontApp')
           return response.data;
         });
       },
-      getAllUnhappyVotesFromApp: function(app){
-      return $http({
-        method: 'GET',
-        url: EnvService.getFeedbackHost() + '/votes/' + app +'/unhappy',
-        headers: {
-          'Accept': 'application/json;charset=UTF-8',
-          'Content-Type': 'application/json'
-        }
-      }).then(function (response) {
-        return response.data;
-      });
-    }
+      getAllUnhappyVotesFromApp: function (app) {
+        return $http({
+          method: 'GET',
+          url: EnvService.getFeedbackHost() + '/votes/' + app + '/unhappy',
+          headers: {
+            'Accept': 'application/json;charset=UTF-8',
+            'Content-Type': 'application/json'
+          }
+        }).then(function (response) {
+          return response.data;
+        });
+      }
     };
   };
 

@@ -20,9 +20,9 @@ angular
     'highcharts-ng'
   ])
 
-  .config(feedbackFrontAppConfig);
+  .config(feedbackFrontAppConfig)
 
-  feedbackFrontAppConfig.$inject = ['$stateProvider', '$urlRouterProvider', 'ApplicationControllerResolver'];
+  feedbackFrontAppConfig.$inject = ['$stateProvider', '$urlRouterProvider', 'ApplicationControllerResolver', '$mdThemingProvider'];
 
   function feedbackFrontAppConfig ($stateProvider, $urlRouterProvider, ApplicationControllerResolver) {
     $urlRouterProvider.otherwise('/');

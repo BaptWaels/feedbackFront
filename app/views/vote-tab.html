@@ -1,0 +1,33 @@
+<md-content layout="row" layout-align="center">
+  <md-card flex="60">
+    <md-toolbar class="md-theme-light">
+      <div class="md-toolbar-tools">
+        <h2>
+          <span>Comments</span>
+        </h2>
+        <span flex></span>
+        {{type}}<md-switch aria-label="switchComment" ng-change="changeType()" ng-model="showUnhappy"></md-switch>
+      </div>
+    </md-toolbar>
+    <md-list>
+      <md-list-item ng-show="!showUnhappy" class="md-3-line" ng-repeat="vote in happyVotesWithComment">
+        <div class="md-list-item-text">
+          <h3 class="pseudo">{{ vote.user.username.toLowerCase() }}</h3>
+          <h4>{{formatDate(vote.date)}}</h4>
+          <p>{{ vote.comment }}</p>
+        </div>
+        <md-divider ng-if="!$last"></md-divider>
+      </md-list-item>
+
+      <md-list-item ng-show="showUnhappy" class="md-3-line" ng-repeat="vote in unhappyVotesWithComment">
+        <div class="md-list-item-text">
+          <h3 class="pseudo">{{ vote.user.username.toLowerCase() }}</h3>
+          <h4>{{formatDate(vote.date)}}</h4>
+          <p>{{ vote.comment }}</p>
+        </div>
+        <md-divider ng-if="!$last"></md-divider>
+      </md-list-item>
+    </md-list>
+
+  </md-card>
+</md-content>

@@ -1,5 +1,6 @@
 .voteStats{
   text-align: center;
+  margin-top: 20px;
 }
 
 .positive{
@@ -12,4 +13,12 @@
 
 md-card > h4{
   font-weight: normal;
+}
+
+.ratioCard{
+  cursor: pointer;
+}
+
+.pseudo{
+  font-weight: bold;
 }
