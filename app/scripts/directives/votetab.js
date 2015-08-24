@@ -21,11 +21,18 @@
 
   function VoteTabController($scope, $q) {
     $scope.showUnhappy = false;
+    $scope.type = 'happy';
+    $scope.dateTo = new Date();
+
+    var d = new Date();
+    d.setDate(d.getDate() - 7);
+    $scope.dateFrom = d;
+
     $scope.happyVotesWithComment = [];
     $scope.unhappyVotesWithComment = [];
+
     $scope.formatDate = formatDate;
     $scope.changeType = changeType;
-    $scope.type = 'happy';
 
     $q.all([$scope.happy, $scope.unhappy]).then(function (data) {
       $scope.votesWithComment = [];

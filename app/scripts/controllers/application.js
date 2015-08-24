@@ -11,7 +11,7 @@
   function ApplicationController($scope, DataService, allData) {
 
     //MODIFY HERE TO SHOW COMMENTS
-    $scope.showRatio = true;
+    $scope.showRatio = false;
     $scope.toggleCommentMode = toggleCommentMode;
     $scope.toggleRatioMode = toggleRatioMode;
 
