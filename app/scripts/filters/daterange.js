@@ -1,18 +1,14 @@
-'use strict';
+(function(){
+  'use strict';
 
-/**
- * @ngdoc filter
- * @name feedbackFrontApp.filter:daterange
- * @function
- * @description
- * # daterange
- * Filter in the feedbackFrontApp.
- */
-angular.module('feedbackFrontApp')
-  .filter('daterange', function () {
+
+angular
+  .module('feedbackFrontApp')
+  .filter('daterange', daterange);
+
+  function daterange () {
     return function(items, from, to)
     {
-      console.log(items);
       var dateFrom = new Date(from);
       var dateTo = new Date(to);
 
@@ -28,4 +24,6 @@ angular.module('feedbackFrontApp')
       return result;
     };
 
-  });
+  }
+
+})();
