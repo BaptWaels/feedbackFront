@@ -22,9 +22,9 @@ angular
 
   .config(feedbackFrontAppConfig)
 
-  feedbackFrontAppConfig.$inject = ['$stateProvider', '$urlRouterProvider', 'ApplicationControllerResolver', '$mdThemingProvider'];
+  feedbackFrontAppConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
 
-  function feedbackFrontAppConfig ($stateProvider, $urlRouterProvider, ApplicationControllerResolver) {
+  function feedbackFrontAppConfig ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
 
     $stateProvider
@@ -39,8 +39,7 @@ angular
         views:{
           '': {
             templateUrl: 'views/application.html',
-            controller: 'ApplicationController',
-            resolve: ApplicationControllerResolver
+            controller: 'ApplicationController'
           }
         }
       });

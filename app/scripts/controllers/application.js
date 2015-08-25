@@ -3,12 +3,11 @@
 
   angular
     .module('feedbackFrontApp')
-    .controller('ApplicationController', ApplicationController)
-    .constant('ApplicationControllerResolver', ApplicationControllerResolver());
+    .controller('ApplicationController', ApplicationController);
 
-  ApplicationController.$inject = ['$scope', 'DataService', 'allData'];
+  ApplicationController.$inject = ['$scope'];
 
-  function ApplicationController($scope, DataService, allData) {
+  function ApplicationController($scope) {
 
     //MODIFY HERE TO SHOW COMMENTS
     $scope.showRatio = true;
@@ -21,14 +20,6 @@
 
     function toggleRatioMode () {
       $scope.showRatio = true;
-    }
-  }
-
-  function ApplicationControllerResolver() {
-    return {
-      allData: ['DataService', function (DataService) {
-        return;
-      }]
     }
   }
 
