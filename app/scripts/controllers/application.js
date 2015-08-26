@@ -14,8 +14,9 @@
     $scope.toggleCommentMode = toggleCommentMode;
     $scope.toggleRatioMode = toggleRatioMode;
 
-    function toggleCommentMode () {
+    function toggleCommentMode (showUnhappy) {
       $scope.showRatio = false;
+      $scope.showUnhappy = showUnhappy;
     }
 
     function toggleRatioMode () {

@@ -1,6 +1,6 @@
 <md-tabs md-border-bottom md-dynamic-height>
     <md-tab ng-repeat="app in apps" label="{{app.appName}}" ng-click="modifyCurrentApp(app.appName)">
-        <app-tab toggle-comment-mode="toggleCommentMode()" ng-show="showRatio" happy="app.happy" unhappy="app.unhappy"></app-tab>
-        <vote-tab toggle-ratio-mode="toggleRatioMode()" ng-show="!showRatio" happy="app.happy" unhappy="app.unhappy"></vote-tab>
+        <app-tab toggle-comment-mode="toggleCommentMode(showUnhappy)" ng-show="showRatio" happy="app.happy" unhappy="app.unhappy"></app-tab>
+        <vote-tab toggle-ratio-mode="toggleRatioMode()" show-unhappy="showUnhappy" ng-show="!showRatio" happy="app.happy" unhappy="app.unhappy"></vote-tab>
     </md-tab>
 </md-tabs>

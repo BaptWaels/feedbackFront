@@ -1,19 +1,19 @@
-<div>
-  <h1 layout="row" layout-align="center center">Votes Ratio :</h1>
+<speed-dial second-button="toggleCommentMode()"></speed-dial>
 
-  <md-content class="voteStats" layout="row" layout-align="center">
-      <md-card class="ratioCard" ng-class="{'md-whiteframe-z4': hoverFirst}" ng-mouseenter="hoverFirst = true" ng-mouseleave="hoverFirst = false" flex="33" ng-click="toggleCommentMode()">
-        <md-icon md-svg-src="images/for.svg" style="color:#66CC99;"></md-icon>
-        <h1 class="positive">{{happyRatio | number:1}}% ({{happyNb}})</h1>
-      </md-card>
+<h1 layout="row" layout-align="center center">Votes Ratio :</h1>
 
-      <md-card class="ratioCard" ng-class="{'md-whiteframe-z4': hoverSecond}" ng-mouseenter="hoverSecond = true" ng-mouseleave="hoverSecond = false" flex="33" ng-click="toggleCommentMode()">
-        <md-icon md-svg-src="images/against.svg" style="color:#D24D57;"></md-icon>
-        <h1 class="negative">{{unhappyRatio | number:1}}% ({{unhappyNb}})</h1>
-      </md-card>
-    </md-content>
+<md-content class="voteStats" layout="row" layout-align="center">
+    <md-card class="ratioCard" ng-class="{'md-whiteframe-z4': hoverFirst}" ng-mouseenter="hoverFirst = true" ng-mouseleave="hoverFirst = false" flex="33" ng-click="toggleCommentMode({showUnhappy: false})">
+      <md-icon md-svg-src="images/for.svg" style="color:#66CC99;"></md-icon>
+      <h1 class="positive">{{happyRatio | number:1}}% ({{happyNb}})</h1>
+    </md-card>
 
-  <div layout="row" layout-align="center">
-    <highchart config="pieConfig" disableDataWatch="false"></highchart>
-  </div>
+    <md-card class="ratioCard" ng-class="{'md-whiteframe-z4': hoverSecond}" ng-mouseenter="hoverSecond = true" ng-mouseleave="hoverSecond = false" flex="33" ng-click="toggleCommentMode({showUnhappy: true})">
+      <md-icon md-svg-src="images/against.svg" style="color:#D24D57;"></md-icon>
+      <h1 class="negative">{{unhappyRatio | number:1}}% ({{unhappyNb}})</h1>
+    </md-card>
+  </md-content>
+
+<div layout="row" layout-align="center">
+  <highchart config="pieConfig" disableDataWatch="false"></highchart>
 </div>

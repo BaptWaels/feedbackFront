@@ -10,7 +10,9 @@
         scope: {
           happy: '=',
           unhappy: '=',
-          showRatio: '='
+          showRatio: '=',
+          showUnhappy: '=',
+          toggleRatioMode: '&'
         },
         restrict: 'E',
         controller: VoteTabController
@@ -20,21 +22,20 @@
   VoteTabController.$inject = ['$scope', '$q'];
 
   function VoteTabController($scope, $q) {
-    $scope.showUnhappy = false;
-    $scope.type = 'happy';
+
     $scope.dateTo = new Date();
-
-    var d = new Date();
-    d.setDate(d.getDate() - 7);
-    $scope.dateFrom = d;
-
+    $scope.dateFrom = initDateFrom();
     $scope.happyVotesWithComment = [];
     $scope.unhappyVotesWithComment = [];
 
     $scope.formatDate = formatDate;
-    $scope.changeType = changeType;
+    $q.all([$scope.happy, $scope.unhappy]).then(removeVotesWithEmptyComments);
 
-    $q.all([$scope.happy, $scope.unhappy]).then(function (data) {
+    $scope.$watch('showUnhappy', function(){
+      $scope.type = ($scope.showUnhappy)?'unhappy':'happy';
+    });
+
+    function removeVotesWithEmptyComments(data) {
       $scope.votesWithComment = [];
 
       data[0].forEach(function(vote){
@@ -48,7 +49,7 @@
           $scope.unhappyVotesWithComment.push(vote);
         }
       });
-    });
+    };
 
     function formatDate (date){
       var monthNames = ["January", "February", "March", "April", "May", "June",
@@ -61,13 +62,10 @@
 
     };
 
-    function changeType(){
-      if($scope.showUnhappy){
-        $scope.type = 'unhappy';
-      }else{
-        $scope.type = 'happy';
-      }
-    }
-
+    function initDateFrom(){
+      var d = new Date();
+      d.setDate(d.getDate() - 7);
+      return d;
+    };
   };
 })();
