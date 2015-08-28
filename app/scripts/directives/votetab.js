@@ -12,7 +12,8 @@
           unhappy: '=',
           showRatio: '=',
           showUnhappy: '=',
-          toggleRatioMode: '&'
+          toggleRatioMode: '&',
+          toggleLineMode: '&'
         },
         restrict: 'E',
         controller: VoteTabController

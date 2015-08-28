@@ -15,7 +15,6 @@ angular.module('feedbackFrontApp')
       'production' : 'http://offer.subsidia.org/feedback-server-mvc/api/v1'
     };
 
-    // Public API here
     return {
       getFeedbackHost: function () {
         return feedbackApiHost[currentEnv];

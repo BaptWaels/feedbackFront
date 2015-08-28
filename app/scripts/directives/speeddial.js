@@ -11,8 +11,9 @@ angular.module('feedbackFrontApp')
     return {
       templateUrl: 'views/speed-dial.html',
       scope:{
-        firstButton: '&',
-        secondButton: '&'
+        pieButton: '&',
+        voteButton: '&',
+        lineButton: '&'
       },
       restrict: 'E'
     };

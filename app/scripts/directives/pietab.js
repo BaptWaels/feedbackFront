@@ -3,23 +3,26 @@
   'use strict';
 
   angular.module('feedbackFrontApp')
-    .controller('AppTabController', AppTabController)
-    .directive('appTab', function () {
-      return {
-        templateUrl: 'views/app-tab.html',
-        scope: {
-          happy: '=',
-          unhappy: '=',
-          toggleCommentMode: '&'
-        },
-        restrict: 'E',
-        controller: AppTabController
-      }
-    });
+    .controller('PieTabController', PieTabController)
+    .directive('pieTab', pieTab);
 
-  AppTabController.$inject = ['$scope', '$q'];
+  PieTabController.$inject = ['$scope', '$q'];
 
-  function AppTabController($scope, $q) {
+  function pieTab(){
+    return {
+      templateUrl: 'views/pie-tab.html',
+      scope: {
+        happy: '=',
+        unhappy: '=',
+        toggleCommentMode: '&',
+        toggleLineMode: '&'
+      },
+      restrict: 'E',
+      controller: PieTabController
+    }
+  };
+
+  function PieTabController($scope, $q) {
 
     $q.all([$scope.happy, $scope.unhappy]).then(function (data) {
       $scope.happyNb = data[0].length;
