@@ -13,7 +13,7 @@
       templateUrl: 'views/line-tab.html',
       scope: {
         toggleCommentMode: '&',
-        toggleRatioMode: '&'
+        togglePieMode: '&'
       },
       restrict: 'E',
       controller: LineTabController

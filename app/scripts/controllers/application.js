@@ -10,29 +10,29 @@
   function ApplicationController($scope) {
 
     //MODIFY HERE TO SHOW COMMENTS
-    $scope.showRatio = true;
+    $scope.showPie = true;
     $scope.showLine = false;
     $scope.showVote = false;
 
     $scope.toggleCommentMode = toggleCommentMode;
-    $scope.toggleRatioMode = toggleRatioMode;
+    $scope.togglePieMode = togglePieMode;
     $scope.toggleLineMode = toggleLineMode;
 
     function toggleCommentMode (showUnhappy) {
-      $scope.showRatio = false;
+      $scope.showPie = false;
       $scope.showLine = false;
       $scope.showVote = true;
       $scope.showUnhappy = showUnhappy;
     }
 
-    function toggleRatioMode () {
-      $scope.showRatio = true;
+    function togglePieMode () {
+      $scope.showPie = true;
       $scope.showVote = false;
       $scope.showLine = false;
     }
 
     function toggleLineMode () {
-      $scope.showRatio = false;
+      $scope.showPie = false;
       $scope.showVote = false;
       $scope.showLine = true;
     }

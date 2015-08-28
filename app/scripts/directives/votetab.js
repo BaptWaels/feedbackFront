@@ -10,9 +10,9 @@
         scope: {
           happy: '=',
           unhappy: '=',
-          showRatio: '=',
+          showPie: '=',
           showUnhappy: '=',
-          toggleRatioMode: '&',
+          togglePieMode: '&',
           toggleLineMode: '&'
         },
         restrict: 'E',
