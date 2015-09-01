@@ -6,7 +6,7 @@ angular
   .module('feedbackFrontApp')
   .factory('StatisticsService', StatisticsService);
 
-  StatisticsService.$inject['$http', 'EnvService']; // jshint ignore:line
+  StatisticsService.$inject = ['$http', 'EnvService']; // jshint ignore:line
 
   function StatisticsService($http, EnvService) { // jshint ignore:line
     return {

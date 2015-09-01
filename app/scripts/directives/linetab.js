@@ -14,7 +14,7 @@
       scope: {
         toggleCommentMode: '&',
         togglePieMode: '&',
-        stats: '&'
+        stats: '='
       },
       restrict: 'E',
       controller: LineTabController
@@ -22,32 +22,45 @@
   }
 
   function LineTabController($scope, $q) { // jshint ignore:line
+    $q.all([$scope.stats]).then(fillData);
 
+    function fillData(data) {
+      $scope.data = [];
+      $scope.data.happyRatio = [];
+      $scope.data.unhappyRatio = [];
+      $scope.data.categories = [];
 
-
-    $q.all([$scope.stats]).then(function (data) {
-
-      data[0].forEach(function(){
-        //construct table with datas for highChart (deux tableaux, l'un avec happyRatio et l'autre sans)
+      data[0].forEach(function(stat){
+        if(stat.appName === 'first'){
+          $scope.data.happyRatio.push(stat.happyRatio * 100);
+          $scope.data.unhappyRatio.push(stat.unhappyRatio * 100);
+          $scope.data.categories.push(stat.weekNumber);
+        }
       });
 
+      drawChart();
+    }
 
-      reloadChart();
-    });
-
-    var reloadChart = function () {
+    var drawChart = function () {
       $scope.lineConfig = {
         title: {
           text: '',
           x: -20 //center
         },
+        options: {
+          exporting: {
+            enabled: false
+          }
+        },
         xAxis: {
-          categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-            'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+          title : {
+            text: 'Week Number'
+          },
+          categories: $scope.data.categories
         },
         yAxis: {
           title: {
-            text: 'Temperature (°C)'
+            text: 'Votes Ratio (%)'
           },
           plotLines: [{
             value: 0,
@@ -66,21 +79,15 @@
         },
         series: [{
           name: 'happyRatio',
-          data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+          data: $scope.data.happyRatio
         },
         {
           name: 'unhappyRatio',
-          data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+          data: $scope.data.unhappyRatio
         }
         ]
       };
     };
-
-    reloadChart();
-
-
-
-
   }
 })();
 

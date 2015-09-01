@@ -5,9 +5,9 @@
     .module('feedbackFrontApp')
     .controller('ApplicationController', ApplicationController);
 
-  ApplicationController.$inject = ['$scope'];
+  ApplicationController.$inject = ['$scope', 'StatisticsService'];
 
-  function ApplicationController($scope) { // jshint ignore:line
+  function ApplicationController($scope, StatisticsService) { // jshint ignore:line
 
     //MODIFY HERE TO SHOW COMMENTS
     $scope.showPie = true;
@@ -35,6 +35,10 @@
       $scope.showPie = false;
       $scope.showVote = false;
       $scope.showLine = true;
+
+      if($scope.votesStats == undefined){
+        $scope.votesStats = StatisticsService.getAllStatsFromYear('2015');
+      }
     }
   }
 

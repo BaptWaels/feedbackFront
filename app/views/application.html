@@ -2,6 +2,6 @@
     <md-tab ng-repeat="app in apps" label="{{app.appName}}" ng-click="modifyCurrentApp(app.appName)">
         <pie-tab toggle-comment-mode="toggleCommentMode(showUnhappy)" toggle-line-mode="toggleLineMode()" ng-show="showPie" happy="app.happy" unhappy="app.unhappy"></pie-tab>
         <vote-tab toggle-pie-mode="togglePieMode()" toggle-line-mode="toggleLineMode()" show-unhappy="showUnhappy" ng-show="showVote" happy="app.happy" unhappy="app.unhappy"></vote-tab>
-        <line-tab toggle-pie-mode="togglePieMode()" toggle-comment-mode="toggleCommentMode(showUnhappy)" ng-show="showLine"></line-tab>
+        <line-tab toggle-pie-mode="togglePieMode()" toggle-comment-mode="toggleCommentMode(showUnhappy)" stats="votesStats" ng-show="showLine"></line-tab>
     </md-tab>
 </md-tabs>
