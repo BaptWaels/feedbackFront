@@ -4,9 +4,9 @@
   angular.module('feedbackFrontApp')
     .factory('VoteService', VoteService);
 
-  VoteService.$inject['$http', 'EnvService'];
+  VoteService.$inject = ['$http', 'EnvService']; // jshint ignore:line
 
-  function VoteService($http, EnvService) {
+  function VoteService($http, EnvService) { // jshint ignore:line
 
 
     return {
@@ -83,6 +83,6 @@
         });
       }
     };
-  };
+  }
 
 })();

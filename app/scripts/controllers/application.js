@@ -7,7 +7,7 @@
 
   ApplicationController.$inject = ['$scope'];
 
-  function ApplicationController($scope) {
+  function ApplicationController($scope) { // jshint ignore:line
 
     //MODIFY HERE TO SHOW COMMENTS
     $scope.showPie = true;
@@ -18,20 +18,20 @@
     $scope.togglePieMode = togglePieMode;
     $scope.toggleLineMode = toggleLineMode;
 
-    function toggleCommentMode (showUnhappy) {
+    function toggleCommentMode (showUnhappy) { // jshint ignore:line
       $scope.showPie = false;
       $scope.showLine = false;
       $scope.showVote = true;
       $scope.showUnhappy = showUnhappy;
     }
 
-    function togglePieMode () {
+    function togglePieMode () { // jshint ignore:line
       $scope.showPie = true;
       $scope.showVote = false;
       $scope.showLine = false;
     }
 
-    function toggleLineMode () {
+    function toggleLineMode () { // jshint ignore:line
       $scope.showPie = false;
       $scope.showVote = false;
       $scope.showLine = true;

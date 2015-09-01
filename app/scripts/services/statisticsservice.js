@@ -6,9 +6,9 @@ angular
   .module('feedbackFrontApp')
   .factory('StatisticsService', StatisticsService);
 
-  StatisticsService.$inject['$http', 'EnvService'];
+  StatisticsService.$inject['$http', 'EnvService']; // jshint ignore:line
 
-  function StatisticsService() {
+  function StatisticsService($http, EnvService) { // jshint ignore:line
     return {
       getAllStatsFromYear: function(year){
         return $http({
@@ -47,5 +47,5 @@ angular
         });
       }
     };
-  };
+  }
 })();

@@ -17,12 +17,12 @@
         },
         restrict: 'E',
         controller: VoteTabController
-      }
+      };
     });
 
   VoteTabController.$inject = ['$scope', '$q'];
 
-  function VoteTabController($scope, $q) {
+  function VoteTabController($scope, $q) { // jshint ignore:line
 
     $scope.dateTo = new Date();
     $scope.dateFrom = initDateFrom();
@@ -36,37 +36,37 @@
       $scope.type = ($scope.showUnhappy)?'unhappy':'happy';
     });
 
-    function removeVotesWithEmptyComments(data) {
+    function removeVotesWithEmptyComments(data) { // jshint ignore:line
       $scope.votesWithComment = [];
 
       data[0].forEach(function(vote){
-        if(vote.comment != undefined){
+        if(vote.comment !== undefined){
           $scope.happyVotesWithComment.push(vote);
         }
       });
 
       data[1].forEach(function(vote){
-        if(vote.comment != undefined){
+        if(vote.comment !== undefined){
           $scope.unhappyVotesWithComment.push(vote);
         }
       });
-    };
+    }
 
-    function formatDate (date){
-      var monthNames = ["January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"
+    function formatDate (date){ // jshint ignore:line
+      var monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December'
       ];
 
       var dateObj = new Date(date);
 
-      return dateObj.getDate() + " " + monthNames[dateObj.getMonth()] + " " + dateObj.getFullYear();
+      return dateObj.getDate() + ' ' + monthNames[dateObj.getMonth()] + ' ' + dateObj.getFullYear();
 
-    };
+    }
 
-    function initDateFrom(){
+    function initDateFrom(){ // jshint ignore:line
       var d = new Date();
       d.setDate(d.getDate() - 7);
       return d;
-    };
-  };
+    }
+  }
 })();

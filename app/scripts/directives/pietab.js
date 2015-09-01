@@ -8,7 +8,7 @@
 
   PieTabController.$inject = ['$scope', '$q'];
 
-  function pieTab(){
+  function pieTab(){ // jshint ignore:line
     return {
       templateUrl: 'views/pie-tab.html',
       scope: {
@@ -19,10 +19,10 @@
       },
       restrict: 'E',
       controller: PieTabController
-    }
-  };
+    };
+  }
 
-  function PieTabController($scope, $q) {
+  function PieTabController($scope, $q) { // jshint ignore:line
 
     $q.all([$scope.happy, $scope.unhappy]).then(function (data) {
       $scope.happyNb = data[0].length;
@@ -83,6 +83,6 @@
     };
 
     reloadChart();
-  };
+  }
 
 })();

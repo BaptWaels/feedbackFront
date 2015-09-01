@@ -4,10 +4,10 @@
 angular.module('feedbackFrontApp')
   .factory('EnvService', EnvService);
 
-  function EnvService() {
+  function EnvService() { // jshint ignore:line
 
     //Env courant de l'appli
-    var currentEnv = 'integration';
+    var currentEnv = 'production';
 
     var feedbackApiHost = {
       'integration' : 'http://offer-integ.preprod.org/feedback-server-mvc/api/v1',
@@ -20,6 +20,6 @@ angular.module('feedbackFrontApp')
         return feedbackApiHost[currentEnv];
       }
     };
-  };
+  }
 
 })();

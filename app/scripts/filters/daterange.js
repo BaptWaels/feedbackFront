@@ -6,7 +6,7 @@ angular
   .module('feedbackFrontApp')
   .filter('daterange', daterange);
 
-  function daterange () {
+  function daterange () { // jshint ignore:line
     return function(items, from, to)
     {
       var dateFrom = new Date(from);

@@ -20,18 +20,18 @@ angular
     'highcharts-ng'
   ])
 
-  .config(feedbackFrontAppConfig)
+  .config(feedbackFrontAppConfig);
 
   feedbackFrontAppConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
 
-  function feedbackFrontAppConfig ($stateProvider, $urlRouterProvider) {
+  function feedbackFrontAppConfig ($stateProvider, $urlRouterProvider) { // jshint ignore:line
     $urlRouterProvider.otherwise('/');
 
     $stateProvider
       .state('home',{
         url: '/',
-            templateUrl: 'views/main.html',
-            controller : 'MainCtrl'
+            templateUrl: 'views/main.html'
+            //controller : 'MainCtrl'
       })
 
       .state('app', {
