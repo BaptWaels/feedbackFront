@@ -22,20 +22,18 @@
   }
 
   function LineTabController($scope, $q) { // jshint ignore:line
+    $scope.data = [];
+    $scope.data.happyRatio = [];
+    $scope.data.unhappyRatio = [];
+    $scope.data.categories = [];
+
     $q.all([$scope.stats]).then(fillData);
-
     function fillData(data) {
-      $scope.data = [];
-      $scope.data.happyRatio = [];
-      $scope.data.unhappyRatio = [];
-      $scope.data.categories = [];
-
       data[0].forEach(function(stat){
-        if(stat.appName === 'first'){
-          $scope.data.happyRatio.push(stat.happyRatio * 100);
-          $scope.data.unhappyRatio.push(stat.unhappyRatio * 100);
-          $scope.data.categories.push(stat.weekNumber);
-        }
+        $scope.data.happyRatio.push(stat.happyRatio * 100);
+        $scope.data.unhappyRatio.push(stat.unhappyRatio * 100);
+        $scope.data.categories.push(stat.weekNumber);
+        console.log(stat.weekNumber);
       });
 
       drawChart();
@@ -44,10 +42,13 @@
     var drawChart = function () {
       $scope.lineConfig = {
         title: {
-          text: '',
+          text: 'Votes Ratio by Week',
           x: -20 //center
         },
         options: {
+          chart:{
+            type: 'column'
+          },
           exporting: {
             enabled: false
           }
@@ -79,15 +80,19 @@
         },
         series: [{
           name: 'happyRatio',
-          data: $scope.data.happyRatio
+          data: $scope.data.happyRatio,
+          color: '#66CC99'
         },
         {
           name: 'unhappyRatio',
-          data: $scope.data.unhappyRatio
+          data: $scope.data.unhappyRatio,
+          color: '#D24D57'
         }
         ]
       };
     };
+
+    drawChart();
   }
 })();
 

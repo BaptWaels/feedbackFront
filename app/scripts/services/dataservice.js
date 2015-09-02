@@ -51,7 +51,8 @@
     ];
     /* jshint ignore:end */
 
-    function initData() {
+    function initData(){
+    console.log('init');
       teams.forEach(function (team) { // jshint ignore:line
         team.data.forEach(function (app) {
           app.happy = VoteService.getAllHappyVotesFromApp(app.appName);
@@ -75,6 +76,7 @@
       getTeams: function () {
         return teams; // jshint ignore:line
       },
+      initData: initData,
       getCurrentAppsFromTeamName: function (activeTeamName) {
         var apps = [];
 

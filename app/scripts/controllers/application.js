@@ -37,7 +37,7 @@
       $scope.showLine = true;
 
       if($scope.votesStats == undefined){
-        $scope.votesStats = StatisticsService.getAllStatsFromYear('2015');
+        $scope.votesStats = StatisticsService.getAllStatsFromYearAndAppname('2015', 'rangeplan');
       }
     }
   }

@@ -5,9 +5,12 @@
     .module('feedbackFrontApp')
     .controller('MainCtrl', MainCtrl);
 
-  MainCtrl.$inject = ['$scope', 'DataService', 'StatisticsService'];
+  MainCtrl.$inject = ['$scope', 'DataService', 'StatisticsService', 'EnvService'];
 
-  function MainCtrl($scope, DataService, StatisticsService) { // jshint ignore:line
+  function MainCtrl($scope, DataService, StatisticsService, EnvService) { // jshint ignore:line
+    $scope.env = EnvService.getCurrentEnv();
+    $scope.envs = ['integration', 'recette', 'production'];
+
     $scope.teams = DataService.getTeams();
     $scope.activeTeam = '';
     $scope.currentApp = '';
@@ -19,6 +22,12 @@
     $scope.teamSelected = teamSelected;
     $scope.modifyCurrentApp = modifyCurrentApp;
 
+    $scope.modifyEnv = function(env){
+      EnvService.setFeedbackHost(env);
+      $scope.env = env;
+      DataService.initData();
+    };
+
     function teamSelected(name) { // jshint ignore:line
       $scope.activeTeam = name;
       $scope.apps = DataService.getCurrentAppsFromTeamName($scope.activeTeam);
@@ -26,7 +35,6 @@
       $scope.currentHappyVotes = DataService.getCurrentVotesFromAppNameAndTeamAndType($scope.activeTeam, $scope.currentApp, 'happy');
       $scope.currentUnhappyVotes = DataService.getCurrentVotesFromAppNameAndTeamAndType($scope.activeTeam, $scope.currentApp, 'unhappy');
       $scope.votesStats = StatisticsService.getAllStatsFromYear('2015');
-      console.log($scope.votesStats);
     }
 
     function modifyCurrentApp(appName) { // jshint ignore:line
@@ -36,3 +44,10 @@
     }
   }
 })();
+
+
+
+
+
+
+

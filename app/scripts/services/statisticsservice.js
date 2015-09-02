@@ -45,6 +45,18 @@ angular
         }).then(function (response) {
           return response.data;
         });
+      },
+      getAllStatsFromYearAndAppname: function(year, appName){
+        return $http({
+          method: 'GET',
+          url: EnvService.getFeedbackHost() + '/statistics/votes/' + year + '/' + appName,
+          headers: {
+            'Accept': 'application/json;charset=UTF-8',
+            'Content-Type': 'application/json'
+          }
+        }).then(function (response) {
+          return response.data;
+        });
       }
     };
   }

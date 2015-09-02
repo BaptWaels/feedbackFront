@@ -1,1 +1,21 @@
-<h1 layout="row" layout-align="center">Hello, World !</h1>
+<h2 layout="row" layout-align="center">Welcome inside Feedback App (Back Office)</h2>
+
+<md-content layout="row" layout-align="center">
+  <md-card flex="60">
+    <md-toolbar class="md-accent md-hue-5">
+      <div class="md-toolbar-tools">
+        <h2>
+          <span>Configuration</span>
+        </h2>
+      </div>
+    </md-toolbar>
+
+    <p layout="row" layout-align="center">Select your environment :</p>
+
+    <md-content layout="row" layout-align="center">
+      <md-select ng-model="env" flex="30" aria-label="env" ng-change="modifyEnv(env)">
+        <md-option ng-repeat="env in envs" value="{{env}}">{{env}}</md-option>
+      </md-select>
+    </md-content>
+  </md-card>
+</md-content>

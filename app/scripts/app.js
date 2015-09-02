@@ -31,7 +31,6 @@ angular
       .state('home',{
         url: '/',
             templateUrl: 'views/main.html'
-            //controller : 'MainCtrl'
       })
 
       .state('app', {

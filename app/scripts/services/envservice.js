@@ -18,6 +18,12 @@ angular.module('feedbackFrontApp')
     return {
       getFeedbackHost: function () {
         return feedbackApiHost[currentEnv];
+      },
+      getCurrentEnv: function(){
+        return currentEnv;
+      },
+      setFeedbackHost: function(env){
+        currentEnv = env;
       }
     };
   }
