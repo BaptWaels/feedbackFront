@@ -35,10 +35,6 @@
       $scope.showPie = false;
       $scope.showVote = false;
       $scope.showLine = true;
-
-      if($scope.votesStats == undefined){
-        $scope.votesStats = StatisticsService.getAllStatsFromYearAndAppname('2015', 'rangeplan');
-      }
     }
   }
 

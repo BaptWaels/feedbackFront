@@ -28,31 +28,11 @@
             'happy': [],
             'unhappy': []
           }]
-      },
-      {
-        'name': 'merchandising',
-        'data': [
-          {
-            'appName': 'First',
-            'happy': [],
-            'unhappy': []
-          },
-          {
-            'appName': 'Second',
-            'happy': [],
-            'unhappy': []
-          },
-          {
-            'appName': 'Third',
-            'happy': [],
-            'unhappy': []
-          }]
       }
     ];
     /* jshint ignore:end */
 
     function initData(){
-    console.log('init');
       teams.forEach(function (team) { // jshint ignore:line
         team.data.forEach(function (app) {
           app.happy = VoteService.getAllHappyVotesFromApp(app.appName);

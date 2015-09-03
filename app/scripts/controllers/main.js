@@ -34,7 +34,7 @@
       $scope.currentApp = $scope.apps[0].appName;
       $scope.currentHappyVotes = DataService.getCurrentVotesFromAppNameAndTeamAndType($scope.activeTeam, $scope.currentApp, 'happy');
       $scope.currentUnhappyVotes = DataService.getCurrentVotesFromAppNameAndTeamAndType($scope.activeTeam, $scope.currentApp, 'unhappy');
-      $scope.votesStats = StatisticsService.getAllStatsFromYear('2015');
+      $scope.votesStats = StatisticsService.getAllStats();
     }
 
     function modifyCurrentApp(appName) { // jshint ignore:line
